@@ -1,0 +1,121 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url(assets/what-the-hex-dark.png);
+} 
+
+#banner {
+    text-align: center;
+    margin: 0 0 50px 0;
+    font-family:sans-serif;
+    font-size: 50px;
+    padding: 20px;
+    color: #c5c6c7;
+    font-weight: bold;
+}
+
+
+input {
+    width: 50%;
+    text-align: center;
+}
+
+#search {
+    margin:  0 auto;
+    margin-bottom: 50px;
+    display: inline-block;
+
+}
+
+.box{
+    width: 100%;
+    text-align:center;
+}
+
+#title {
+    background: white;
+    border-top: dashed 15px #66fcf1; 
+    border-right: dashed 15px #66fcf1;
+    border-left: dashed 15px #66fcf1; 
+    padding: 0 188px 0 155px;
+    background-image: url(assets/prism.png);
+    font-size: 30px;
+    color: #66fcf1;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+
+#left {
+    float: right;
+}
+
+.maincontainer {
+    padding: 50px 100px 150px 100px;
+    text-align: center;
+    border-bottom: dashed 15px #66fcf1;
+    border-left: dashed 15px #66fcf1; 
+    border-right: dashed 15px #66fcf1; 
+    background-image: url(assets/prism.png);
+}
+
+
+
+.originalTweet {
+    border: black 5px solid;
+    float:left;
+    height: 30%;
+    width: 30%;
+    background-color: white;
+    max-height: 100%;
+}
+
+#button {
+    background-color:#45a29e;
+    border: solid black 2px;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+}
+
+#button:hover {
+    background-color: black;
+    border: #45a29e solid 2px;
+    color: #66fcf1;
+    transition-duration: 1.0s;
+}
+
+.transmogTweet {
+    border: black 5px solid;
+    float:right;
+    height: 30%;
+    width: 30%;
+    background-color: white;
+    max-height: 100%;
+}
+
+.box2 {
+    width: 100%;
+    text-align: center;
+    margin: 50px 0 0 0;
+}
+
+#export {
+    background-color: black; 
+    border: 2px solid #45a29e;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+}
+
+#export:hover {
+    background-color: #45a29e;
+    color: black;
+    border: solid 2px black;
+    transition-duration: 1.0s;
+}
