@@ -5,6 +5,10 @@ const encodedKey = encodeURIComponent(consumerKey);
 const encodedSecret = encodeURIComponent(consumerSecret);
 const basicAuth = btoa(`${encodedKey}:${encodedSecret}`);
 
+const userInput = function () {
+    $
+}
+
 
 
 
@@ -21,15 +25,27 @@ const getTweet = function() {
         }
     }).then(function (response) {
         const bearerToken = response.access_token;
+
         return $.ajax({
-            url: corsAnywhere + "https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=realDonaldTrump",
+            url: corsAnywhere + `https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=${$('#search').val().trim()}`,
             method: "GET",
             headers: {
                 Authorization: "Bearer " + bearerToken
             }
+        
         });
     }).then(function (timeline) {
-        console.log(timeline);
+        if (timeline[0].entities.urls.length !== 0) {
+            for (i=0; i < timeline[0].entities.urls.length; i++) {
+                const cutURL = timeline[0].text.replace(timeline[0].entities.urls[i].url, '')
+                $('.originalTweet').text(cutURL)
+            }
+        }
+        else {
+        $('.originalTweet').text(timeline[0].text);
+        }
+        console.log(timeline)
+        $('#search').val('')
         return timeline;
     });
 }
