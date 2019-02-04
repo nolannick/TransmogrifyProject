@@ -23,7 +23,7 @@ const searchUser = function() {
         const bearerToken = response.access_token;
 
         return $.ajax({
-            url: corsAnywhere + `https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=${$('#search').val().trim()}`,
+            url: corsAnywhere + `https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=${$('#search').val().trim()}&tweet_mode=extended`,
             method: "GET",
             headers: {
                 Authorization: "Bearer " + bearerToken
@@ -31,9 +31,9 @@ const searchUser = function() {
         
         });
     }).then(function (timeline) {
-        const textArray1 = timeline[0].text.split(' ')
+        const textArray1 = timeline[0].full_text.split(' ')
         for (i = 0; i < textArray1.length; i++) {
-            if (textArray1[i].includes('RT') || textArray1[i].includes('#') || textArray1[i].includes('@') || textArray1[i].includes('|') || textArray1[i].includes('https') || textArray1[i].includes('...')) {
+            if (textArray1[i].includes('RT') || textArray1[i].includes('#') || textArray1[i].includes('@') || textArray1[i].includes('|') || textArray1[i].includes('https') || textArray1[i].includes('...') || textArray1[i].includes('-')) {
                 textArray1.splice(i, 1)
             }
 
@@ -60,7 +60,7 @@ const searchKey = function() {
         const bearerToken = response.access_token;
 
         return $.ajax({
-            url: corsAnywhere + `https://api.twitter.com/1.1/search/tweets.json?q=${$('#search').val().trim()}&result_type=popular&lang=en`,
+            url: corsAnywhere + `https://api.twitter.com/1.1/search/tweets.json?q=${$('#search').val().trim()}&result_type=popular&lang=en&tweet_mode=extended`,
             method: "GET",
             headers: {
                 Authorization: "Bearer " + bearerToken
@@ -68,9 +68,9 @@ const searchKey = function() {
         
         });
     }).then(function (timeline) {
-        const textArray2 = timeline.statuses[0].text.split(' ')
+        const textArray2 = timeline.statuses[0].full_text.split(' ')
         for (i = 0; i < textArray2.length; i++) {
-            if (textArray2[i].includes('RT') || textArray2[i].includes('#') || textArray2[i].includes('@') || textArray2[i].includes('|') || textArray2[i].includes('https') || textArray2[i].includes('...')) {
+            if (textArray2[i].includes('RT') || textArray2[i].includes('#') || textArray2[i].includes('@') || textArray2[i].includes('|') || textArray2[i].includes('https') || textArray2[i].includes('...') || textArray2[i].includes('-')) {
                 textArray2.splice(i, 1)
             }
 
