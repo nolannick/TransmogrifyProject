@@ -5,12 +5,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
+
 <body>
+    <header id="banner">Off Brand Tweets</header>
+    <div class="box">
+        <input type="text" id= "search" placeholder="Search Twitter Handles!">
+    </div>
+    <div id="title">
+        <column id= "right">Original Tweet</column>
+        <column id="left">New Tweet</column>
+    </div>
+    <div class="maincontainer">
+        <div class="originalTweet">
+        </div>
+        <button type="button" id="button">Transmog!</button> 
+        
+        <div class="transmogTweet">
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellat esse ipsum commodi nobis aut fuga earum ab ratione, 
+            blanditiis iure porro ea quia neque enim fugit quibusdam odit vero consectetur?
+        </div>
+    </div>
+    <div class="box2"><button type="button" id="export">Export!</button></div>
     
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
-    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-    crossorigin="anonymous"></script>
-    <script src="transmogrify.js"></script>
+    <button id='twitterLogin'> Log into Twitter</button>
+
+    <div id="tweets"></div>
+ <button id='getTweetButton'>Search User</button>
+ <button id='searchKey'>Search Keyword</button>
+    <script src="transmogrify.js"></script>  
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.min.js"></script>
+    <script src="render.js"></script>
+    <script src="twitter.js"></script>
+    <script src="textLookup.js"></script>
+    <script src="main.js"></script>
+
 </body>
 </html>
