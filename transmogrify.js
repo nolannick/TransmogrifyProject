@@ -10,25 +10,26 @@
     return string.split(" "); 
   }
   
-  const randomize = function (array, num, synonymObject){//takes that twitter array, a number for amount of random words, and newSynonyms
+  //takes that twitter array, a number for amount of random words, and newSynonyms
+  const randomize = function (array, num, synonymObject){
     let chosenIndexes = [];
     let potentialIndex = 0;
-    while (chosenIndexes.length < num){//We go through this until we've filled the chosenIndexes to be replaced.
+    //We go through this until we've filled the chosenIndexes to be replaced.
+    while (chosenIndexes.length < num){
       potentialIndex = Math.floor(Math.random() * Math.floor(array.length));
-      /*
-        Go through the array at random and choose an index. If that index has already been grabbed, or it's a banned word, skip.
-      */
+      //Go through the array at random and choose an index. If that index has already been grabbed, or it's a banned word, skip.
       if(chosenIndexes.includes(array[potentialIndex]) || bannedWords.includes(array[potentialIndex])){  
       } else {
         chosenIndexes.push(array[potentialIndex]);
-        console.log(synonymObject.indexes);  
-        synonymObject.indexes.push(potentialIndex);//add indexes to synonym object array for later use
+        console.log(synonymObject.indexes);
+        //add indexes to synonym object array for later use
+        synonymObject.indexes.push(potentialIndex);
       }
     }
     return chosenIndexes;
   }
   
-  const indexesToWords = function(chosenIndexes) {//turns the indexes into words.
+  const indexesToWords = function(chosenIndexes) {
     let chosenWords = [];
     chosenIndexes.forEach(function (word){
       chosenWords.push(word);
@@ -37,16 +38,7 @@
     return chosenWords;
   }
   
-  function integrateSynonyms(twitterArray, newSynonyms){//takes new synonyms and forces them into the old array. Returns array (to be turned into a string)
-    for(let i = 0; i< 5; i++){
-      if(newSynonyms.words[i]!=="undefined"){
-        twitterArray[newSynonyms.indexes[i]]=newSynonyms.words[i];
-      } 
-    }
-    const newTwitterString = twitterArray.join(" ");
-    return newTwitterString;
-  }
-  
+  //Once you go async you never go back
   async function grabSynonyms(indexesToWords){
     const urls = [];
     const newWords = [];
@@ -71,16 +63,22 @@
         console.log(integrateSynonyms(twitterArray, newSynonyms));
       })
   }
-  
+
+  function integrateSynonyms(twitterArray, newSynonyms){//takes new synonyms and forces them into the old array. Returns combined string of old array.
+    for(let i = 0; i< 5; i++){
+      if(newSynonyms.words[i]!=="undefined"){
+        twitterArray[newSynonyms.indexes[i]]=newSynonyms.words[i];
+      } 
+    }
+    const newTwitterString = twitterArray.join(" ");
+    return newTwitterString;
+  }
+
   const addWordsToSynonymObject = function(newWords, newSynonyms) {
     newWords.forEach(function (word){
       newSynonyms.words.push(word);
     })
   }
-  const arrayToString = function(twitterArray){
-    twitterArray.join(" ");
-  }
-  
   
   let twitterArray = twitterStrtoArr(twitterString); //turn twitter array into variable
   console.log(twitterArray);
@@ -89,30 +87,6 @@
   let wordstoSynonym = indexesToWords(indexes);
   console.log(grabSynonyms(wordstoSynonym));
 
-
-
-
-
-// const sortBannedWords = function(array, counter) {
-//   array.forEach(function (word){
-//     if (bannedWords.includes(word)){
-//       counter++;
-//     }
-//   })
-//   return counter;
-// }
-
-// // const findSynonym = function(tweet) {
-// //   let tweetArray = twitterStrtoArr(tweet);
-// //   console.log(tweetArray);
-// //   let bannedWords = 0;
-// //   bannedWords = sortBannedWords(tweetArray, bannedWords);
-// //   randomize(tweetArray, 5, bannedWords)
-// // }
-
-// // findSynonym(twitterString);
-
-//end? tweetArray.join(" ")
 
 
 
