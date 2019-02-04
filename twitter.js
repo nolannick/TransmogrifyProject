@@ -69,19 +69,23 @@ const searchKey = function() {
         
         });
     }).then(function (timeline) {
+
         const textArray2 = timeline.statuses[0].full_text.split(' ')
+
+        //const textArray2 = timeline.statuses[0].text.split(' ');
+
         for (i = 0; i < textArray2.length; i++) {
             if (textArray2[i].includes('RT') || textArray2[i].includes('#') || textArray2[i].includes('@') || textArray2[i].includes('|') || textArray2[i].includes('https') || textArray2[i].includes('...') || textArray2[i].includes('-') || textArray2[i].includes('&')) {
                 textArray2.splice(i, 1)
             }
 
         }
-        textArray2.join(' ')
-        console.log(textArray2)
-        console.log(timeline)
-        $('#search').val('')
-        const originalTweet = textArray2.join(' ')
-        $('.originalTweet').text(originalTweet)
+        textArray2.join(' ');
+        console.log(textArray2);
+        console.log(timeline);
+        $('#search').val('');
+        const originalTweet = textArray2.join(' ');
+        $('.originalTweet').text(originalTweet);
     });
 }
 
