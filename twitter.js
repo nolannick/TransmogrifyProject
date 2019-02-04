@@ -60,7 +60,7 @@ const searchKey = function() {
         const bearerToken = response.access_token;
 
         return $.ajax({
-            url: corsAnywhere + `https://api.twitter.com/1.1/search/tweets.json?q=${$('#search').val().trim()}&result_type=popular`,
+            url: corsAnywhere + `https://api.twitter.com/1.1/search/tweets.json?q=${$('#search').val().trim()}&result_type=popular&lang=en`,
             method: "GET",
             headers: {
                 Authorization: "Bearer " + bearerToken
@@ -79,7 +79,7 @@ const searchKey = function() {
         console.log(textArray2)
         console.log(timeline)
         $('#search').val('')
-        const originalTweet = textArray1.join(' ')
+        const originalTweet = textArray2.join(' ')
         $('.originalTweet').text(originalTweet)
     });
 }
