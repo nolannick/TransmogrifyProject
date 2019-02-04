@@ -7,12 +7,22 @@
     <title>Document</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Black+Ops+One" rel="stylesheet">
 </head>
 
 <body>
-    <header id="banner">Off Brand Tweets</header>
+    <header id="banner">Transmogrify Tweets</header>
+    <h1>Making Dumb Tweets Dumber!</h1>
+    <div id="instructions">
+        <p>To pull the latest tweet from a user, enter their twitter handle and click Search User!</p>
+        <p>To pull the latest tweet based on Keyword, enter the Keyword and click Search Keyword!</p>
+    </div>
     <div class="box">
         <input type="text" id= "search" placeholder="Search Twitter Handles!">
+    </div>
+    <div id="searchbuttons">
+        <button id='getTweetButton'>Search User</button>
+        <button id='searchKey'>Search Keyword</button>
     </div>
     <div class="maincontainer">
         <div class="originalTweet">
@@ -33,12 +43,7 @@
     </div>
     <div class="box2"><button type="button" id="export">Export!</button></div>
     
-    <button id='twitterLogin'> Log into Twitter</button>
-
     <div id="tweets"></div>
- <button id='getTweetButton'>Search User</button>
- <button id='searchKey'>Search Keyword</button>
- 
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.min.js"></script>
