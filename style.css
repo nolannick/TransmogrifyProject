@@ -67,9 +67,16 @@ input {
     text-align: center;
     border: dashed 15px #66fcf1; 
     background-image: url(assets/prism.png);
+    -webkit-animation:Border 20s infinite alternate;
 }
 
-
+@-webkit-keyframes Border {
+    20% {border-color: #1f2833;}
+    40% {border-color: #45a29e;}
+    60% {border-color: #66fcf1;}
+    80% {border-color: #0b0c10;}
+    100% {border-color: #c5c6c7}
+}
 
 .originalTweet {
     border: black 5px solid;
