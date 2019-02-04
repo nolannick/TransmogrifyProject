@@ -22,7 +22,19 @@ h1 {
     font-size: 30px;
 }
 
-#twitterLogin {
+#instructions {
+    text-align: center;
+    color: #c5c6c7
+}
+
+#searchbuttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+#getTweetButton {
     background-color:#45a29e;
     border: solid black 2px;
     color: white;
@@ -30,6 +42,32 @@ h1 {
     text-align: center;
     display: inline-block;
     font-size: 16px;
+    margin-right: 5px;
+}
+
+#getTweetButton:hover {
+    background-color: black;
+    border: #45a29e solid 2px;
+    color: #66fcf1;
+    transition-duration: 1.0s;
+}
+
+#searchKey {
+    background-color:#45a29e;
+    border: solid black 2px;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    margin-left: 5px;
+}
+
+#searchKey:hover {
+    background-color: black;
+    border: #45a29e solid 2px;
+    color: #66fcf1;
+    transition-duration: 1.0s;
 }
 
 #twitterLogin:hover {
@@ -47,7 +85,7 @@ input {
 
 #search {
     margin:  0 auto;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
     display: inline-block;
 
 }
