@@ -1,13 +1,15 @@
-
+const transmogrify= function(){
+  
   const synonyms = {indexes: [], words: []
   }
   let newSynonyms = Object.create(synonyms);
-  let amountOfSynonyms = 5;
-  let twitterString = "Look at all of this stuff that I'm putting down in this string"; //dummy twitter string
-  const bannedWords = ["in", "the", "at", "I'm", "we're", "this", "your", "these", "not", "of", "anything", "that"];//constantly increasing banned words.
+  let amountOfSynonyms = 3;
+  let twitterString = document.querySelector('.originalTweet').innerText; //Grab tweet text
+  //let twitterString = "Well that didn't work so let's look more into health problems and code that actually may work okay okay"
+  const bannedWords = ["in", "the", "at", "I'm", "we're", "this", "your", "these", "not", "of", "anything", "that", "and", "our", "to","be", "necess..."];//constantly increasing banned words.
   
-  const twitterStrtoArr = function(string) { //Input the string to output an array.
-    return string.split(" "); 
+  const twitterStrtoArr = function(string) { //Input the string to output an array. 
+    return string.toLowerCase().split(" "); 
   }
   
   //takes that twitter array, a number for amount of random words, and newSynonyms
@@ -28,6 +30,16 @@
     }
     return chosenIndexes;
   }
+  
+  // let wordLengths = [];
+  // const lengthOfWords = function(wordsArray){
+  //   wordsArray.forEach(function (word){
+  //     wordLengths.push(word.length);
+  //   })
+  //   console.log(wordLengths);
+  // }
+  
+  
   
   const indexesToWords = function(chosenIndexes) {
     let chosenWords = [];
@@ -60,10 +72,12 @@
         } 
         addWordsToSynonymObject(newWords, newSynonyms);
         console.log(newSynonyms.words);
-        console.log(integrateSynonyms(twitterArray, newSynonyms));
+        const newTwitterString= integrateSynonyms(twitterArray, newSynonyms);
+        //lengthOfWords(newSynonyms.words);
+        displayText(newTwitterString);
       })
   }
-
+  
   function integrateSynonyms(twitterArray, newSynonyms){//takes new synonyms and forces them into the old array. Returns combined string of old array.
     for(let i = 0; i< 5; i++){
       if(newSynonyms.words[i]!=="undefined"){
@@ -73,7 +87,7 @@
     const newTwitterString = twitterArray.join(" ");
     return newTwitterString;
   }
-
+  
   const addWordsToSynonymObject = function(newWords, newSynonyms) {
     newWords.forEach(function (word){
       newSynonyms.words.push(word);
@@ -83,9 +97,12 @@
   let twitterArray = twitterStrtoArr(twitterString); //turn twitter array into variable
   console.log(twitterArray);
   let indexes = randomize(twitterArray, amountOfSynonyms, newSynonyms); //randomizes the indexes
-  console.log(indexes);
   let wordstoSynonym = indexesToWords(indexes);
+  //lengthOfWords(wordstoSynonym);
   console.log(grabSynonyms(wordstoSynonym));
+  
+}
+
 
 
 
