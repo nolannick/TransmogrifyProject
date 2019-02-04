@@ -123,7 +123,8 @@ input {
 }
 
 .maincontainer {
-    padding: 30px 100px 180px 100px;
+    height: 80%;
+    padding: 30px 100px 210px 100px;
     text-align: center;
     border: dashed 15px #66fcf1; 
     background-image: url(assets/prism.png);
@@ -131,8 +132,8 @@ input {
 }
 
 @-webkit-keyframes Border {
-    20% {border-color: #1f2833;}
-    40% {border-color: #45a29e;}
+    20% {border-color: #45a29e;}
+    40% {border-color: #1f2833;}
     60% {border-color: #66fcf1;}
     80% {border-color: #0b0c10;}
     100% {border-color: #c5c6c7}
@@ -144,8 +145,10 @@ input {
     height: fit-content;
     width: 30%;
     background-color: white;
-    max-height: 100%;
+    max-height: fit-content;
+    max-width: fit-content;
     margin-bottom: 10px;
+    overflow: auto;
 }
 
 #transmogrify {
@@ -178,8 +181,10 @@ input {
     height: fit-content;
     width: 30%;
     background-color: white;
-    max-height: 100%;
+    max-height: fit-content;
+    max-width: fit-content;
     margin-top: 10px;
+    overflow: auto;
 }
 
 .box2 {
@@ -208,6 +213,7 @@ input {
 @media (width: 320px) {
     .maincontainer {
         padding: 50px 50px 380px 50px;
+        width: 100%;
     }
     .originalTweet {
         width: 100%;
