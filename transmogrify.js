@@ -3,14 +3,22 @@ const transmogrify= function(){
     indexes: [],
     synonyms: []}
   let newSynonyms = Object.create(items);
-  let amountOfSynonyms = 1;
-  //let twitterString = document.querySelector('.originalTweet').innerText; //Grab tweet text
-  let twitterString = "okay, three, okay"
-  const bannedWords = ["in", "the", "at", "I'm", "we're", "this", "your", "these", "not", "of", "anything", "that", "and", "our", "to", "be", "necess...", "do", "with", "is", "no", "dems"];//constantly increasing banned words.
+
   
+  let twitterString = document.querySelector('.originalTweet').innerText; //Grab tweet text
+  //let twitterString = "okay, three, okay"
+
   const twitterStrtoArr = function(string) { //Input the string to output an array. 
     return string.toLowerCase().split(" "); 
   }
+
+  let twitterArray = twitterStrtoArr(twitterString);
+
+  let amountOfSynonyms = (twitterArray.length/5);
+  console.log(amountOfSynonyms);
+  const bannedWords = ["A", "an", "in", "the", "at", "I'm", "we're", "this", "your", "these", "not", "of", "anything", "that", "and", "our", "to", "be", "necess...", "do", "with", "is", "no", "dems", "it", "its", "it's", "these", "i", "by", "he", "for", "my"];//constantly increasing banned words.
+  
+  
 
   const findRegX = function (word) {
     const regX = new RegExp(/\W/);
@@ -43,7 +51,6 @@ const transmogrify= function(){
       //Go through the array at random and choose an index. If that index has already been grabbed, or it's a banned word, skip.
       let potentialWord = array[potentialIndex];
       let flag= findRegX(potentialWord);
-      console.log(flag);
       if(chosenIndexes.includes(potentialWord) || bannedWords.includes(potentialWord) || flag !== -1){  
       } else {
         chosenIndexes.push(array[potentialIndex]);
@@ -76,10 +83,10 @@ const transmogrify= function(){
     return chosenWords;
   }
 
-  const boldWords = function(array) {
-    console.log(array.map(word => `<b>${word}</b>`));
-    return array;
- }
+//   const boldWords = function(array) {
+//     console.log(array.map(word => `<b>${word}</b>`));
+//     return array;
+//  }
 
  const removePunctuation = function (array){
       array.forEach(function (word){
@@ -115,8 +122,8 @@ const transmogrify= function(){
         for (const property in res) {
           newWords.push(res[property].synonyms[0]);  
         }
-        const newWordsBold = boldWords(newWords); 
-        addWordsToSynonymObject(newWordsBold, newSynonyms);
+        //const newWordsBold = boldWords(newWords); 
+        addWordsToSynonymObject(newWords, newSynonyms);
         console.log(newSynonyms.synonyms);
         const newTwitterString= integrateSynonyms(twitterArray, newSynonyms);
         //lengthOfWords(newSynonyms.words);
@@ -134,8 +141,8 @@ const transmogrify= function(){
     return newTwitterString;
   }
   
-  const addWordsToSynonymObject = function(newWordsBold, newSynonyms) {
-    newWordsBold.forEach(function (word){
+  const addWordsToSynonymObject = function(newWords, newSynonyms) {
+    newWords.forEach(function (word){
       newSynonyms.synonyms.push(word);
     })
   }
@@ -147,12 +154,12 @@ const transmogrify= function(){
 
  var reg1 = new RegExp(/\W/);
   
-  let twitterArray = twitterStrtoArr(twitterString); //turn twitter array into variable
+   //turn twitter array into variable
   console.log(twitterArray);
   let indexes = randomize(twitterArray, amountOfSynonyms, newSynonyms); //randomizes the indexes
   let wordstoSynonym = indexesToWords(indexes);
   //lengthOfWords(wordstoSynonym);
-  console.log(grabSynonyms(wordstoSynonym));
+  grabSynonyms(wordstoSynonym);
 }
 
 
