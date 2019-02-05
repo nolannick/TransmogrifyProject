@@ -78,7 +78,6 @@ const splitTextKey = function (timeline) {
         }
 
     }
-    textArray2.join(' ')
     console.log(textArray2)
     console.log(timeline)
     $('#search').val('')
@@ -113,29 +112,36 @@ const nextTweet = function () {
     
 }
 
-/* const postTweet = function(message) {
-    $.ajax({
-        url: `${corsAnywhere}https://api.twitter.com/oauth2/token`,
-        method: "POST",
-        contentType: "application/x-www-form-urlencoded;charset=UTF-8",
-        data: {
-            grant_type: "client_credentials"
-        },
-        headers: {
-            Authorization: "Basic " + basicAuth
-        }
-    }).then(function (response) {
-        const bearerToken = response.access_token;
+//  const postTweet = function(message) {
+//     $.ajax({
+//         url: `${corsAnywhere}https://api.twitter.com/oauth2/token`,
+//         method: "POST",
+//         contentType: "application/x-www-form-urlencoded;charset=UTF-8",
+//         data: {
+//             grant_type: "client_credentials"
+//         },
+//         headers: {
+//             Authorization: "Basic " + basicAuth
+//         }
+//     }).then(function (response) {
+//         const bearerToken = response.access_token;
 
-        return $.ajax({
-            url: corsAnywhere + `https://api.twitter.com/1.1/statuses/update.json?=${message}`,
-            method: "POST",
-            headers: {
-                Authorization: "Bearer " + bearerToken
-            }
-        });
-    });
-} */
+//         return $.ajax({
+//             url: corsAnywhere + `https://api.twitter.com/1.1/statuses/update.json?=${message}`,
+//             method: "POST",
+//             headers: {
+//                 Authorization: "Bearer " + bearerToken,
+//                 oauth_consumer_key= consumerKey,
+//                 oauth_nonce="generated_oauth_nonce",
+//                 oauth_signature="generated_oauth_signature",
+//                 oauth_signature_method="HMAC-SHA1",
+//                 oauth_timestamp="generated_timestamp",
+//                 oauth_token="oauth_token",
+//                 oauth_version="1.0"
+//             }
+//         });
+//     });
+// } 
 
 
 
