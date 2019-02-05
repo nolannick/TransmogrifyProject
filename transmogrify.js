@@ -6,8 +6,10 @@ const transmogrify= function(){
   let spongedWords = Object.create(items);
 
   
+
   let twitterString = document.querySelector('.originalTweetContainer').innerText; //Grab tweet text
   //let twitterString = "okay, three, okay"
+
 
   const twitterStrtoArr = function(string) { //Input the string to output an array. 
     return string.split(" "); 
