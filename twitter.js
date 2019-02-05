@@ -1,15 +1,18 @@
 const corsAnywhere = "https://cors-anywhere.herokuapp.com/";
-const consumerKey = "B1EHMtKxhNZnCtEdd3T0Rv3tD";
-const consumerSecret = "rc7Oz78PNP9vcW9PMPSLTziMikdOE6ZmPGHSPymzQBQLMC9dMo";
+const consumerKey = "7K1HECF7lBg43wCNqzeypgLbR";
+const consumerSecret = "fJEcR0JWQRqstQEOZ2LUzuHzx5EknX9Bur5DAxwItnjL7mXoeA";
 const encodedKey = encodeURIComponent(consumerKey);
 const encodedSecret = encodeURIComponent(consumerSecret);
 const basicAuth = btoa(`${encodedKey}:${encodedSecret}`);
-let transformedTweet = ''
+let transformedTweet = 'Hello'
+let counter = 0
+let globalArray = []
+let buttonClick = ""
 
 
 
 
-const searchUser = function() {
+const searchUser = function () {
     $.ajax({
         url: `${corsAnywhere}https://api.twitter.com/oauth2/token`,
         method: "POST",
@@ -29,24 +32,16 @@ const searchUser = function() {
             headers: {
                 Authorization: "Bearer " + bearerToken
             }
-        
         });
     }).then(function (timeline) {
-        const textArray1 = timeline[0].full_text.split(' ')
-        for (i = 0; i < textArray1.length; i++) {
-            if (textArray1[i].includes('RT') || textArray1[i].includes('#') || textArray1[i].includes('@') || textArray1[i].includes('|') || textArray1[i].includes('https') || textArray1[i].includes('...') || textArray1[i].includes('-')) {
-                textArray1.splice(i, 1)
-            }
-
-        }
-        console.log(textArray1)
-        console.log(timeline)
-        $('#search').val('')
-        const originalTweet = textArray1.join(' ')
-        $('.originalTweet').text(originalTweet)
+        counter = 0
+        buttonClick = "user";
+        globalArray = timeline;
+        splitTextUser(timeline);
+        
     });
 }
-const searchKey = function() {
+const searchKey = function () {
     $.ajax({
         url: `${corsAnywhere}https://api.twitter.com/oauth2/token`,
         method: "POST",
@@ -66,30 +61,59 @@ const searchKey = function() {
             headers: {
                 Authorization: "Bearer " + bearerToken
             }
-        
         });
     }).then(function (timeline) {
-
-        const textArray2 = timeline.statuses[0].full_text.split(' ')
-
-        //const textArray2 = timeline.statuses[0].text.split(' ');
-
-        for (i = 0; i < textArray2.length; i++) {
-            if (textArray2[i].includes('RT') || textArray2[i].includes('#') || textArray2[i].includes('@') || textArray2[i].includes('|') || textArray2[i].includes('https') || textArray2[i].includes('...') || textArray2[i].includes('-') || textArray2[i].includes('&')) {
-                textArray2.splice(i, 1)
-            }
-
-        }
-        textArray2.join(' ');
-        console.log(textArray2);
-        console.log(timeline);
-        $('#search').val('');
-        const originalTweet = textArray2.join(' ');
-        $('.originalTweet').text(originalTweet);
+        counter = 0
+        buttonClick = "";
+        globalArray = timeline;
+        splitTextKey(timeline)
     });
 }
 
-const postTweet = function(message) {
+const splitTextKey = function (timeline) {
+    const textArray2 = timeline.statuses[counter].full_text.split(' ')
+    for (i = 0; i < textArray2.length; i++) {
+        if (textArray2[i].includes('RT') || textArray2[i].includes('#') || textArray2[i].includes('@') || textArray2[i].includes('|') || textArray2[i].includes('https') || textArray2[i].includes('...') || textArray2[i].includes('-') || textArray2[i].includes('&')) {
+            textArray2.splice(i, 1)
+        }
+
+    }
+    textArray2.join(' ')
+    console.log(textArray2)
+    console.log(timeline)
+    $('#search').val('')
+    const originalTweet = textArray2.join(' ')
+    $('.originalTweet').text(originalTweet)
+}
+const splitTextUser = function (timeline) {
+    let textArray1 = timeline[counter].full_text.split(' ')
+    for (i = 0; i < textArray1.length; i++) {
+        if (textArray1[i].includes('RT') || textArray1[i].includes('#') || textArray1[i].includes('@') || textArray1[i].includes('|') || textArray1[i].includes('https') || textArray1[i].includes('...') || textArray1[i].includes('-')) {textArray1.splice(i, 1)}
+    }
+    console.log(textArray1)
+    console.log(timeline)
+    $('#search').val('')
+    const originalTweet = textArray1.join(' ')
+    $('.originalTweet').text(originalTweet)
+}
+
+
+const nextTweet = function () {
+    counter++
+    console.log(counter)
+    if (counter >= 15) {
+        counter = 0
+    }
+    if (buttonClick === "user") {
+        splitTextUser(globalArray)
+    }
+    else {
+        splitTextKey(globalArray)
+    }
+    
+}
+
+/* const postTweet = function(message) {
     $.ajax({
         url: `${corsAnywhere}https://api.twitter.com/oauth2/token`,
         method: "POST",
@@ -109,20 +133,18 @@ const postTweet = function(message) {
             headers: {
                 Authorization: "Bearer " + bearerToken
             }
-        
         });
-    }).then(function () {
-
     });
-
-}
-
+} */
 
 
 
 
 
-$('#getTweetButton').on('click', searchUser);
+
+$('#getTweetButton').on('click', searchUser)
 $('#searchKey').on('click', searchKey)
+
+$('#nextTweet').on('click', nextTweet)
 //$('#export').on('click', postTweet(transformedTweet))
 
