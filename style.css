@@ -168,6 +168,26 @@ input {
     transition-duration: 1.0s;
 }
 
+#loaderBox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loader {
+    border: 16px solid #f3f3f3; /* Light grey */
+    border-top: 16px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 12px;
+    height: 12px;
+    animation: spin 2s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
 #button:hover {
     background-color: black;
     border: #45a29e solid 2px;
@@ -211,6 +231,9 @@ input {
 }
 
 @media (width: 320px) {
+    #banner {
+        font-size: 30px;
+    }
     .maincontainer {
         padding: 50px 50px 380px 50px;
         width: 100%;
@@ -224,6 +247,9 @@ input {
 }
 
 @media (width: 375px) {
+    #banner {
+        font-size: 30px;
+    }
     .maincontainer {
         padding: 50px 50px 380px 50px;
     }
@@ -236,6 +262,9 @@ input {
 }
 
 @media (width: 360px){
+    #banner {
+        font-size: 30px;
+    }
     .maincontainer {
         padding: 50px 50px 380px 50px;
     }
@@ -279,6 +308,7 @@ input {
         width: 100%;
     }
     .transmogTweet {
+        float:none;
         width: 100%;
     }
 }
@@ -287,6 +317,7 @@ input {
     .transmogTweet{
         width: fit-content;
         margin-top: 10px;
+        float: none;
     }
     .originalTweet {
         width: fit-content;
@@ -295,13 +326,18 @@ input {
 }
 
 @media (width: 768px) {
+    .maincontainer {
+        padding: 50px 50px 380px 50px;
+    }
     .transmogTweet{
         width: fit-content;
         margin-top: 10px;
+        float: none;
     }
     .originalTweet {
-        width: fit-content;
         margin-bottom: 10px;
+        float: none;
+        width: fit-content;
     }
 }
 
