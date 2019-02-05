@@ -61,9 +61,28 @@ h1 {
     display: inline-block;
     font-size: 16px;
     margin-left: 5px;
+    margin-right: 5px;
 }
 
 #searchKey:hover {
+    background-color: black;
+    border: #45a29e solid 2px;
+    color: #66fcf1;
+    transition-duration: 1.0s;
+}
+
+#nextTweet {
+    background-color:#45a29e;
+    border: solid black 2px;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    margin-left: 5px;
+}
+
+#nextTweet:hover {
     background-color: black;
     border: #45a29e solid 2px;
     color: #66fcf1;
