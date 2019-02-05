@@ -3,20 +3,21 @@ const transmogrify= function(){
     indexes: [],
     synonyms: []}
   let newSynonyms = Object.create(items);
+  let spongedWords = Object.create(items);
 
   
-  let twitterString = document.querySelector('.originalTweet').innerText; //Grab tweet text
+  let twitterString = document.querySelector('.originalTweetContainer').innerText; //Grab tweet text
   //let twitterString = "okay, three, okay"
 
   const twitterStrtoArr = function(string) { //Input the string to output an array. 
-    return string.toLowerCase().split(" "); 
+    return string.split(" "); 
   }
 
   let twitterArray = twitterStrtoArr(twitterString);
 
   let amountOfSynonyms = (twitterArray.length/5);
   console.log(amountOfSynonyms);
-  const bannedWords = ["A", "an", "in", "the", "at", "I'm", "we're", "this", "your", "these", "not", "of", "anything", "that", "and", "our", "to", "be", "necess...", "do", "with", "is", "no", "dems", "it", "its", "it's", "these", "i", "by", "he", "for", "my"];//constantly increasing banned words.
+  const bannedWords = ["a", "an", "in", "the", "at", "i'm", "we're", "this", "your", "these", "not", "of", "anything", "that", "and", "our", "to", "be", "necess...", "do", "with", "is", "no", "dems", "it", "its", "it's", "these", "i", "by", "he", "for", "my", "from", "are", "msm", "bs"];//constantly increasing banned words.
   
   
 
@@ -35,6 +36,10 @@ const transmogrify= function(){
     punctuation = array[array.length-1];
     return punctuation;
   }
+  const grabRestOfWord = function(array) {
+    word = array.splice(0, array[array.length-1])
+    return word;
+  }
 
   // if(flaggedIndex !== -1){
   //   const array = splitToArray(word);
@@ -51,12 +56,13 @@ const transmogrify= function(){
       //Go through the array at random and choose an index. If that index has already been grabbed, or it's a banned word, skip.
       let potentialWord = array[potentialIndex];
       let flag= findRegX(potentialWord);
-      if(chosenIndexes.includes(potentialWord) || bannedWords.includes(potentialWord) || flag !== -1){  
+      if(chosenIndexes.includes(potentialWord) || bannedWords.includes(potentialWord) || flag !== -1 || potentialWord.toLowerCase() !== potentialWord){  
       } else {
         chosenIndexes.push(array[potentialIndex]);
         console.log(synonymObject.indexes);
         //add indexes to synonym object array for later use
         synonymObject.indexes.push(potentialIndex);
+        spongedWords.indexes.push()
       }
     }
     return chosenIndexes;
@@ -70,10 +76,6 @@ const transmogrify= function(){
   //   console.log(wordLengths);
   // }
   
-
-
-  
-
   const indexesToWords = function(chosenIndexes) {
     let chosenWords = [];
     chosenIndexes.forEach(function (word){
@@ -93,7 +95,7 @@ const transmogrify= function(){
         let reg1= newRegExp(/\W/);
         if(word.search(reg1) !== -1){
           console.log("awesome");
-          console.log(word)
+          console.log(word);
         }
         else{
           console.log("sucks")
