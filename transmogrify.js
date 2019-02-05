@@ -6,7 +6,7 @@ const transmogrify= function(){
   let amountOfSynonyms = 3;
   let twitterString = document.querySelector('.originalTweet').innerText; //Grab tweet text
   //let twitterString = "Well that didn't work so let's look more into health problems and code that actually may work okay okay"
-  const bannedWords = ["in", "the", "at", "I'm", "we're", "this", "your", "these", "not", "of", "anything", "that", "and", "our", "to","be", "necess..."];//constantly increasing banned words.
+  const bannedWords = ["in", "the", "at", "I'm", "we're", "this", "your", "these", "not", "of", "anything", "that", "and", "our", "to","be", "necess...",'it','a'];//constantly increasing banned words.
   
   const twitterStrtoArr = function(string) { //Input the string to output an array. 
     return string.toLowerCase().split(" "); 
