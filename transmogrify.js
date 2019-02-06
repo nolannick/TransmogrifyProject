@@ -3,14 +3,13 @@ const transmogrify= function(){
     indexes: [],
     changedIndexes: [],
     synonyms: []}
-  const oldWords = { //Feel like I'm missing out on something cool by using inheritance here somehow.
+  const oldWords = {//Feel like I'm missing out on something cool by using inheritance here somehow.
   }
   let newSynonyms = Object.create(items);
 
   let spongedWords = Object.create(oldWords);
-
   let twitterString = document.querySelector('.originalTweetContainer').innerText; //Grab tweet text
-
+  //let twitterString = "sup isn't this ain't proud faul't bann't banned"; 
   const twitterStrtoArr = function(string) { //Input the string to output an array. 
     return string.split(" "); 
   }
@@ -59,7 +58,7 @@ const transmogrify= function(){
       //Go through the array at random and choose an index. If that index has already been grabbed, or it's a banned word, skip.
       let potentialWord = array[potentialIndex];
       let flag = findRegX(potentialWord);
-      if(chosenIndexes.includes(potentialWord) || bannedWords.includes(potentialWord)){  
+      if(chosenIndexes.includes(potentialWord) || bannedWords.includes(potentialWord) || potentialWord.includes("'")){  
       } else {
         console.log(chosenIndexes.push(array[potentialIndex]));
         console.log(synonymObject.indexes);
@@ -89,9 +88,9 @@ const transmogrify= function(){
     } 
     console.log(newSynonyms.changedIndexes)
    }
-
-  const indexesToWords = function(chosenIndexes) {
-    let chosenWords = [];
+   let chosenWords = [];
+  const indexesToWords = function(chosenIndexes, chosenWords) {
+   
     for(let i=0; i<chosenIndexes.length; i++){//change foreach
       chosenWords.push(chosenIndexes[i]);
       console.log(spongedWords[i]= new Object());
@@ -138,15 +137,22 @@ const transmogrify= function(){
           console.log(newSynonyms.synonyms[index] += punctuation);
         })
         console.log(newSynonyms.synonyms);
-        const newTwitterString= integrateSynonyms(twitterArray, newSynonyms);
+        const newTwitterString= integrateSynonyms(twitterArray, newSynonyms, chosenWords);
         //lengthOfWords(newSynonyms.words);
         displayText(newTwitterString);
+        twitterLink(newTwitterString);
       })
   }
   
-  function integrateSynonyms(twitterArray, newSynonyms){//takes new synonyms and forces them into the old array. Returns combined string of old array.
-    for(let i = 0; i< 5; i++){
-      if(newSynonyms.synonyms[i]!=="undefined"){
+  function integrateSynonyms(twitterArray, newSynonyms, chosenWords){//takes new synonyms and forces them into the old array. Returns combined string of old array.
+    for(let i = 0; i< newSynonyms.synonyms.length; i++){
+      if(newSynonyms.synonyms[i]!==undefined){
+        twitterArray[newSynonyms.indexes[i]]=newSynonyms.synonyms[i];
+        console.log(chosenWords);
+      }
+      else{
+        newSynonyms.synonyms[i]=chosenWords[i];
+        console.log(chosenWords[i]);
         twitterArray[newSynonyms.indexes[i]]=newSynonyms.synonyms[i];
       } 
     }
@@ -165,7 +171,7 @@ const transmogrify= function(){
    //turn twitter array into variable
   console.log(twitterArray);
   let indexes = randomize(twitterArray, amountOfSynonyms, newSynonyms); //randomizes the indexes
-  let wordstoSynonym = indexesToWords(indexes);
+  let wordstoSynonym = indexesToWords(indexes, chosenWords);
   //lengthOfWords(wordstoSynonym);
   grabSynonyms(wordstoSynonym);
 
@@ -176,8 +182,3 @@ const transmogrify= function(){
 
 
 }
-
-
-
-
-
