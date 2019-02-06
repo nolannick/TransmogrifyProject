@@ -27,7 +27,7 @@ body {
 
 
 
-h1 {
+#headline {
     text-align: center;
     color: #45a29e;
     font-size: 30px;
@@ -155,13 +155,15 @@ input {
 }
 
 .maincontainer {
-    height: 80%;
-    padding: 30px 100px 210px 100px;
+    height: 50%;
+    padding: 50px;
+    margin: 10px 20px 10px 20px;
     text-align: center;
     border: dashed 15px #66fcf1; 
     background-image: url(assets/prism.png);
     -webkit-animation:Border 20s infinite alternate;
     font: 16px/1.4 Helvetica, Roboto, "Segoe UI", Calibri, sans-serif;
+    overflow: auto;
 }
 
 @-webkit-keyframes Border {
@@ -179,8 +181,6 @@ input {
     height: fit-content;
     width: 30%;
     background-color: white;
-    max-height: fit-content;
-    max-width: fit-content;
     margin-bottom: 10px;
     overflow: auto;
 }
@@ -245,9 +245,6 @@ input {
     height: fit-content;
     width: 30%;
     background-color: white;
-    max-height: fit-content;
-    max-width: fit-content;
-    margin-top: 10px;
     overflow: auto;
 }
 
@@ -274,125 +271,136 @@ input {
     transition-duration: 1.0s;
 }
 
-@media (width: 320px) {
-    #banner {
-        font-size: 30px;
-    }
+
+@media (max-width: 1024px) {
     .maincontainer {
-        padding: 50px 50px 380px 50px;
-        width: 100%;
+        padding: 30px;
     }
     .originalTweet {
-        width: 100%;
+        width: 35%;
     }
     .transmogTweet {
-        width: 100%;
+        width: 35%;
     }
 }
 
-@media (width: 375px) {
-    #banner {
-        font-size: 30px;
-    }
+@media (max-width: 820px) {
     .maincontainer {
-        padding: 50px 50px 380px 50px;
+        padding: 15px;
     }
     .originalTweet {
-        width: 100%;
+        width: 30%;
     }
     .transmogTweet {
-        width: 100%;
+        width: 30%;
     }
 }
 
-@media (width: 360px){
-    #banner {
-        font-size: 30px;
-    }
+@media (max-width: 800px) {
     .maincontainer {
-        padding: 50px 50px 380px 50px;
+        padding: 40px;
+        text-align: center;
     }
-    .originalTweet {
-        width: 100%;
-    }
-    .transmogTweet {
-        width: 100%;
-    }
-}
-
-@media (width:411px) {
-    .maincontainer {
-        padding: 50px 50px 380px 50px;
-    }
-    .originalTweet {
-        width: 100%;
-    }
-    .transmogTweet {
-        width: 100%;
-    }
-}
-
-@media (width: 414px) {
-    .maincontainer {
-        padding: 50px 50px 380px 50px;
-    }
-    .originalTweet {
-        width: 100%;
-    }
-    .transmogTweet {
-        width: 100%;
-    }
-}
-
-@media (width: 425px) {
-    .maincontainer {
-        padding: 50px 50px 380px 50px;
-    }
-    .originalTweet {
-        width: 100%;
-    }
-    .transmogTweet {
-        float:none;
-        width: 100%;
-    }
-}
-
-@media (width: 640px) {
     .transmogTweet{
-        width: fit-content;
+        width: 90%;
+        float: none;
+        margin: 0 auto;
+        margin-top: 20px;
+        
+    }
+    .originalTweet {
+        width: 90%;
+        float: none;
+        margin: 0 auto;
+        margin-bottom: 20px;
+    }
+    .tweet {
+        text-align: center;
+    }
+}
+@media (max-width: 640px) {
+    .transmogTweet{
+        width: 80%;
         margin-top: 10px;
         float: none;
     }
     .originalTweet {
-        width: fit-content;
+        width: 80%;
         margin-bottom: 10px;
     }
 }
 
-@media (width: 768px) {
+@media (max-width: 425px) {
     .maincontainer {
-        padding: 50px 50px 380px 50px;
-    }
-    .transmogTweet{
-        width: fit-content;
-        margin-top: 10px;
-        float: none;
+        padding: 30px;
     }
     .originalTweet {
-        margin-bottom: 10px;
-        float: none;
-        width: fit-content;
-    }
-}
-
-@media (width: 1024px) {
-    .maincontainer {
-        padding: 50px 50px 250px 50px;
-    }
-    .originalTweet {
-        width: 40%;
+        width: 100%;
     }
     .transmogTweet {
-        width: 40%;
+        float: none;
+        width: 100%;
     }
 }
+@media (max-width: 414px) {
+    .maincontainer {
+        padding: 30px;
+    }
+    .originalTweet {
+        width: 100%;
+    }
+    .transmogTweet {
+        width: 100%;
+    }
+}
+@media (max-width: 375px) {
+    #banner {
+        font-size: 30px;
+    }
+    .maincontainer {
+        padding: 30px;
+    }
+    .originalTweet {
+        width: 100%;
+    }
+    .transmogTweet {
+        width: 100%;
+    }
+}
+@media (max-width: 360px){
+    #banner {
+        font-size: 30px;
+    }
+    .maincontainer {
+        padding: 30px;
+    }
+    .originalTweet {
+        width: 100%;
+    }
+    .transmogTweet {
+        width: 100%;
+    }
+}
+@media (max-width: 320px) {
+    #banner {
+        font-size: 30px;
+    }
+    .maincontainer {
+        padding: 30px;
+        width: 100%;
+    }
+    .originalTweet {
+        width: 100%;
+    }
+    .transmogTweet {
+        width: 100%;
+    }
+}
+
+
+
+
+
+
+
+
