@@ -37,9 +37,9 @@ const searchUser = function () {
         counter = 0
         buttonClick = "user";
         globalArray = timeline;
-        //assignTwitterID(timeline);
+        assignTwitterIDUser(timeline);
         splitTextUser(timeline);
-        
+
     });
 }
 const searchKey = function () {
@@ -89,7 +89,7 @@ const splitTextKey = function (timeline) {
 const splitTextUser = function (timeline) {
     let textArray1 = timeline[counter].full_text.split(' ')
     for (i = 0; i < textArray1.length; i++) {
-        if (textArray1[i].includes('RT') || textArray1[i].includes('#') || textArray1[i].includes('@') || textArray1[i].includes('|') || textArray1[i].includes('https') || textArray1[i].includes('...') || textArray1[i].includes('-')) {textArray1.splice(i, 1)}
+        if (textArray1[i].includes('RT') || textArray1[i].includes('#') || textArray1[i].includes('@') || textArray1[i].includes('|') || textArray1[i].includes('https') || textArray1[i].includes('...') || textArray1[i].includes('-')) { textArray1.splice(i, 1) }
     }
     console.log(textArray1)
     console.log(timeline)
@@ -98,10 +98,35 @@ const splitTextUser = function (timeline) {
     $('.originalTweetContainer').text(originalTweet)
 }
 
-// const assignTwitterID = function (TwitterArray) {
-//     let tweetID = TwitterArray.statuses[counter].id_str
-//     document.getElementsByClassName("tweet").setAttribute("id", tweetID);
-// }
+
+const assignTwitterID = function (twitterArray) {
+    let tweetID = twitterArray.statuses[counter].id_str;
+    console.log(tweetID);
+    document.getElementById('tweetEmbedContainer').innerHTML = `<div class="tweet" id="${tweetID}"></div>`;
+    // document.getElementById('tweetEmbedContainerTransmog').innerHTML = `<div class="tweet" id="${tweetID}"></div>`;
+    embedTweetJS();
+    // $("#tweetEmbedContainerTransmog").find("p.Tweet-text").text = 'Testing';
+    // Tweet-text is the class of the <p> elemnt that contains the tweet text
+    // assignTransmogEmbed("");
+}
+
+
+const assignTwitterIDUser = function (twitterArray) {
+    let tweetID = twitterArray[counter].id_str;
+    console.log(tweetID);
+    document.getElementById('tweetEmbedContainer').innerHTML = `<div class="tweet" id="${tweetID}"></div>`;
+    // document.getElementById('tweetEmbedContainerTransmog').innerHTML = `<div class="tweet" id="${tweetID}"></div>`;
+    embedTweetJS();
+    // assignTransmogEmbed("");
+}
+
+const assignTransmogEmbed = function (textForTweet) {
+    setTimeout(function () {
+        let shadowRootTwitter = $('twitter-widget#twitter-widget-3')[0].shadowRoot;
+        shadowRootTwitter.querySelectorAll('p')[0].innerText = textForTweet;
+    }, 1000)
+}
+
 
 const nextTweet = function () {
     counter++
@@ -111,11 +136,13 @@ const nextTweet = function () {
     }
     if (buttonClick === "user") {
         splitTextUser(globalArray)
+        assignTwitterIDUser(globalArray)
     }
     else {
         splitTextKey(globalArray)
+        assignTwitterID(globalArray)
     }
-    
+
 }
 
 const twitterLink = function (string) {

@@ -1,18 +1,20 @@
-var tweets = jQuery(".tweet");
-	
-jQuery(tweets).each( function( t, tweet ) { 
+const embedTweetJS = function () {
+    var tweets = jQuery(".tweet");
 
-var id = jQuery(this).attr('id');
+    jQuery(tweets).each(function (t, tweet) {
 
-twttr.widgets.createTweet(
-  id, tweet, 
-  {
-    conversation : 'none',    // or all
-    cards        : 'hidden',  // or visible 
-    linkColor    : '#cc0000', // default is blue
-    theme        : 'light'    // or dark
-  });
+        var id = jQuery(this).attr('id');
 
-});
+        twttr.widgets.createTweet(
+            id, tweet,
+            {
+                conversation: 'none',    // or all
+                cards: 'hidden',  // or visible 
+                linkColor: '#cc0000', // default is blue
+                theme: 'light'    // or dark
+            });
+
+    });
+}
 
 
