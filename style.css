@@ -16,6 +16,8 @@ body {
     text-decoration: underline solid #c5c6c7;
 }
 
+
+
 h1 {
     text-align: center;
     color: #45a29e;
@@ -132,6 +134,7 @@ input {
     color: #66fcf1;
     font-weight: bold;
     text-decoration: underline #66fcf1 2px;
+    
 }
 
 #right {
@@ -139,6 +142,7 @@ input {
     color: #66fcf1;
     font-weight: bold;
     text-decoration: underline #66fcf1 2px;
+    
 }
 
 .maincontainer {
