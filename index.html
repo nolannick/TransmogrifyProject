@@ -9,7 +9,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
         crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="style.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+        crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Black+Ops+One" rel="stylesheet">
 </head>
 
@@ -21,7 +22,7 @@
         <p>To pull the latest tweet based on Keyword, enter the Keyword and click Search Keyword!</p>
     </div>
     <div class="box">
-        <input type="text" id= "search" placeholder="Search Twitter Handles!">
+        <input type="text" id="search" placeholder="Enter Twitter Handle or keyword here!">
     </div>
     <div id="searchbuttons">
         <button class="btn" id='getTweetButton'>Search User</button>
@@ -32,23 +33,27 @@
         <div class="originalTweet">
             <div id="left">Original Tweet</div>
             <div class="originalTweetContainer">
-            This is the space for the Original Tweet!</div>
+                This is the space for the Original Tweet!
+            </div>
+            <div class="tweet" id="599202861751410688"></div>
         </div>
+
         <button class="btn" type="button" id="transmogrify">Transmog!</button>
         <div class="transmogTweet">
             <div id="right">New Tweet</div>
             <div class="transmogTweetContainer">
-            This is where the new tweet will go!</div>
+                This is where the new tweet will go!</div>
         </div>
     </div>
-    <div class="box2"><button class="btn" type="button" id="export">Export!</button></div>
-    <div id="loaderBox">
-        <div class="loader"></div>
-    </div>        
-<div id="tweets"></div>
+    <div class="box2">
+            <a href="https://twitter.com/intent/tweet" id="twitterPost"><button class="btn" type="button" id="export">Export!</button></a>
+    </div> 
+    <div id="tweets"></div>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.min.js"></script>
+    <script src="http://platform.twitter.com/widgets.js"></script>
+    <script src="twitterWidget.js"></script>
     <script src="transmogrify.js"></script>
     <script src="render.js"></script>
     <script src="twitter.js"></script>
@@ -59,4 +64,3 @@
 </body>
 
 </html>
-
