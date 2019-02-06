@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
         crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Black+Ops+One" rel="stylesheet">
 </head>
 
@@ -23,27 +24,29 @@
         <input type="text" id= "search" placeholder="Search Twitter Handles!">
     </div>
     <div id="searchbuttons">
-        <button id='getTweetButton'>Search User</button>
-        <button id='searchKey'>Search Keyword</button>
-        <button id='nextTweet'>Next Tweet</button>
+        <button class="btn" id='getTweetButton'>Search User</button>
+        <button class="btn" id='searchKey'>Search Keyword</button>
+        <button class="btn" id='nextTweet'>Next Tweet</button>
     </div>
     <div class="maincontainer">
         <div class="originalTweet">
             <div id="left">Original Tweet</div>
-            This is the space for the Original Tweet!
+            <div class="originalTweetContainer">
+            This is the space for the Original Tweet!</div>
         </div>
-        <button type="button" id="transmogrify">Transmog!</button>
+        <button class="btn" type="button" id="transmogrify">Transmog!</button>
         <div class="transmogTweet">
             <div id="right">New Tweet</div>
-            This is where the new tweet will go!
+            <div class="transmogTweetContainer">
+            This is where the new tweet will go!</div>
         </div>
     </div>
-    <div class="box2"><button type="button" id="export">Export!</button></div>
+    <div class="box2"><button class="btn" type="button" id="export">Export!</button></div>
     <div id="loaderBox">
         <div class="loader"></div>
     </div>        
-    <div id="tweets"></div>
-  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+<div id="tweets"></div>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.min.js"></script>
     <script src="transmogrify.js"></script>
