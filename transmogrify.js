@@ -16,7 +16,7 @@ const transmogrify= function(){
 
   let twitterArray = twitterStrtoArr(twitterString);
 
-  let amountOfSynonyms = (twitterArray.length/5);
+  let amountOfSynonyms = (twitterArray.length/6);
   console.log(amountOfSynonyms);
   const bannedWords = ["a", "an", "in", "the", "at", "i'm", "we're", "this", "your", "these", "not", "of", "anything", "that", "and", "our", "to", "be", "necess...", "do", "with", "is", "no", "dems", "it", "its", "it's", "these", "i", "by", "he", "for", "my", "from", "are", "msm", "bs"];//constantly increasing banned words.
   
@@ -58,7 +58,7 @@ const transmogrify= function(){
       //Go through the array at random and choose an index. If that index has already been grabbed, or it's a banned word, skip.
       let potentialWord = array[potentialIndex];
       let flag = findRegX(potentialWord);
-      if(chosenIndexes.includes(potentialWord) || bannedWords.includes(potentialWord) || potentialWord.includes("'")){  
+      if(chosenIndexes.includes(potentialWord) || bannedWords.includes(potentialWord) || potentialWord.includes("'") || potentialWord.includes("http") || potentialWord.toLowerCase()!==potentialWord){  
       } else {
         console.log(chosenIndexes.push(array[potentialIndex]));
         console.log(synonymObject.indexes);
@@ -86,7 +86,6 @@ const transmogrify= function(){
       
       i++;
     } 
-    console.log(newSynonyms.changedIndexes)
    }
    let chosenWords = [];
   const indexesToWords = function(chosenIndexes, chosenWords) {
@@ -96,7 +95,6 @@ const transmogrify= function(){
       console.log(spongedWords[i]= new Object());
       console.log(spongedWords[i]["word"]=chosenIndexes[i]); 
     }
-    console.log(spongedWords[1].word)
     console.log(chosenWords);
     scrubWords(spongedWords, chosenWords);
     console.log(spongedWords[0].word);
@@ -108,6 +106,10 @@ const transmogrify= function(){
 //     return array;
 //  }
 
+
+  const randomInt = function(max) {
+    return Math.floor(Math.random() * Math.floor(max));
+  }
 
   //Once you go async you never go back
   async function grabSynonyms(indexesToWords){
@@ -128,7 +130,9 @@ const transmogrify= function(){
       }));
       Promise.all(urlPromises).then(res => {
         for (const property in res) {
-          newWords.push(res[property].synonyms[0]);  
+          let numberOfSynonyms = res[property].synonyms.length;
+          console.log(numberOfSynonyms);
+          newWords.push(res[property].synonyms[randomInt(numberOfSynonyms)]);  
         }
         //const newWordsBold = boldWords(newWords); 
         addWordsToSynonymObject(newWords, newSynonyms);
@@ -137,7 +141,7 @@ const transmogrify= function(){
           console.log(newSynonyms.synonyms[index] += punctuation);
         })
         console.log(newSynonyms.synonyms);
-        const newTwitterString= integrateSynonyms(twitterArray, newSynonyms, chosenWords);
+        const newTwitterString = integrateSynonyms(twitterArray, newSynonyms, chosenWords);
         //lengthOfWords(newSynonyms.words);
         displayText(newTwitterString);
         twitterLink(newTwitterString);
