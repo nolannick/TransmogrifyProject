@@ -37,6 +37,7 @@ const searchUser = function () {
         counter = 0
         buttonClick = "user";
         globalArray = timeline;
+        assignTwitterID(timeline);
         splitTextUser(timeline);
         
     });
@@ -66,6 +67,7 @@ const searchKey = function () {
         counter = 0
         buttonClick = "";
         globalArray = timeline;
+        assignTwitterID(timeline);
         splitTextKey(timeline)
     });
 }
@@ -82,7 +84,7 @@ const splitTextKey = function (timeline) {
     console.log(timeline)
     $('#search').val('')
     const originalTweet = textArray2.join(' ')
-    $('.originalTweet').text(originalTweet)
+    $('.originalTweetContainer').text(originalTweet)
 }
 const splitTextUser = function (timeline) {
     let textArray1 = timeline[counter].full_text.split(' ')
@@ -93,9 +95,13 @@ const splitTextUser = function (timeline) {
     console.log(timeline)
     $('#search').val('')
     const originalTweet = textArray1.join(' ')
-    $('.originalTweet').text(originalTweet)
+    $('.originalTweetContainer').text(originalTweet)
 }
 
+const assignTwitterID = function (TwitterArray) {
+    let tweetID = TwitterArray.statuses[counter].id_str
+    document.getElementsByClassName("tweet").setAttribute("id", tweetID);
+}
 
 const nextTweet = function () {
     counter++
