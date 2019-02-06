@@ -17,7 +17,7 @@ const transmogrify= function(){
 
   let amountOfSynonyms = (twitterArray.length/5);
   console.log(amountOfSynonyms);
-  const bannedWords = ["a", "an", "in", "the", "at", "i'm", "we're", "this", "your", "these", "not", "of", "anything", "that", "and", "our", "to", "be", "necess...", "do", "with", "is", "no", "dems", "it", "its", "it's", "these", "i", "by", "he", "for", "my", "from", "are", "msm", "bs"];//constantly increasing banned words.
+  const bannedWords = ["a", "an", "in", "the", "at", "i'm", "we're", "this", "your", "these", "not", "of", "anything", "that", "and", "our", "to", "be", "necess...", "do", "with", "is", "no", "dems", "it", "its", "it's", "these", "i", "by", "he", "for", "my", "from", "are", "msm", "bs", "can't", "won't"];//constantly increasing banned words.
   
   const findRegX = function (word) {
     const regX = new RegExp(/\W/);
@@ -48,7 +48,7 @@ const transmogrify= function(){
   // }
   
   //takes that twitter array, a number for amount of random words, and newSynonyms
-  const randomize = function (array, num, synonymObject){
+  const randomize = function (array, num, synonymObject, oldWordsObject){
     let chosenIndexes = [];
     let potentialIndex = 0;
     //We go through this until we've filled the chosenIndexes to be replaced.
@@ -56,8 +56,7 @@ const transmogrify= function(){
       potentialIndex = Math.floor(Math.random() * Math.floor(array.length));
       //Go through the array at random and choose an index. If that index has already been grabbed, or it's a banned word, skip.
       let potentialWord = array[potentialIndex];
-      let flag = findRegX(potentialWord);
-      if(chosenIndexes.includes(potentialWord) || bannedWords.includes(potentialWord)){  
+      if(chosenIndexes.includes(potentialWord) || bannedWords.includes(potentialWord) || potentialWord.includes("'")){  
       } else {
         console.log(chosenIndexes.push(array[potentialIndex]));
         console.log(synonymObject.indexes);
