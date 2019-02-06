@@ -67,7 +67,7 @@ const searchKey = function () {
         counter = 0
         buttonClick = "";
         globalArray = timeline;
-        assignTwitterID(timeline);
+        //assignTwitterID(timeline);
         splitTextKey(timeline)
     });
 }
@@ -98,6 +98,7 @@ const splitTextUser = function (timeline) {
     $('.originalTweetContainer').text(originalTweet)
 }
 
+
 const assignTwitterID = function (twitterArray) {
     let tweetID = twitterArray.statuses[counter].id_str;
     console.log(tweetID);
@@ -126,6 +127,7 @@ const assignTransmogEmbed = function (textForTweet) {
     }, 1000)
 }
 
+
 const nextTweet = function () {
     counter++
     console.log(counter)
@@ -141,6 +143,10 @@ const nextTweet = function () {
         assignTwitterID(globalArray)
     }
 
+}
+
+const twitterLink = function (string) {
+    document.getElementById("twitterPost").href = `https://twitter.com/intent/tweet?text=${string}`;
 }
 
 //  const postTweet = function(message) {
