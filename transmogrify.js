@@ -7,7 +7,7 @@ const transmogrify= function(){
   }
   let newSynonyms = Object.create(items);
   let spongedWords = Object.create(oldWords);
-  let twitterString = document.querySelector('.originalTweet').innerText; //Grab tweet text
+  let twitterString = document.querySelector('.originalTweetContainer').innerText; //Grab tweet text
 
   const twitterStrtoArr = function(string) { //Input the string to output an array. 
     return string.split(" "); 
