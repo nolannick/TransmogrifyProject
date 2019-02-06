@@ -6,6 +6,7 @@ const transmogrify= function(){
   const oldWords = { //Feel like I'm missing out on something cool by using inheritance here somehow.
   }
   let newSynonyms = Object.create(items);
+
   let spongedWords = Object.create(oldWords);
   let twitterString = document.querySelector('.originalTweetContainer').innerText; //Grab tweet text
   //let twitterString = "sup isn't this ain't proud faul't bann't banned"; 
@@ -167,8 +168,6 @@ const transmogrify= function(){
   //lengthOfWords(wordstoSynonym);
   grabSynonyms(wordstoSynonym);
 
-  // THIS IS HOW WE GRAB THE PUNCTUATION AND PUT IT BACK ON THE CHOSEN INDEX
-  // SHOULD I PUT THEM IN THE AJAX CALL? YES. BEFORE PUT BACK INTO A STRING
   // newSynonyms.changedIndexes.forEach(function (index){
   //   let punctuation = spongedWords[index].punctuation;
   //   console.log(newSynonyms.synonyms[index] += punctuation);
