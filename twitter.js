@@ -80,8 +80,6 @@ const splitTextKey = function (timeline) {
         }
 
     }
-    console.log(textArray2)
-    console.log(timeline)
     $('#search').val('')
     const originalTweet = textArray2.join(' ')
     $('.originalTweetContainer').text(originalTweet)
@@ -91,8 +89,6 @@ const splitTextUser = function (timeline) {
     for (i = 0; i < textArray1.length; i++) {
         if (textArray1[i].includes('RT') || textArray1[i].includes('#') || textArray1[i].includes('@') || textArray1[i].includes('|') || textArray1[i].includes('https') || textArray1[i].includes('...') || textArray1[i].includes('-')) { textArray1.splice(i, 1) }
     }
-    console.log(textArray1)
-    console.log(timeline)
     $('#search').val('')
     const originalTweet = textArray1.join(' ')
     $('.originalTweetContainer').text(originalTweet)
@@ -101,7 +97,6 @@ const splitTextUser = function (timeline) {
 
 const assignTwitterID = function (twitterArray) {
     let tweetID = twitterArray.statuses[counter].id_str;
-    console.log(tweetID);
     document.getElementById('tweetEmbedContainer').innerHTML = `<div class="tweet" id="${tweetID}"></div>`;
     // document.getElementById('tweetEmbedContainerTransmog').innerHTML = `<div class="tweet" id="${tweetID}"></div>`
     embedTweetJS();
@@ -113,7 +108,6 @@ const assignTwitterID = function (twitterArray) {
 
 const assignTwitterIDUser = function (twitterArray) {
     let tweetID = twitterArray[counter].id_str;
-    console.log(tweetID);
     document.getElementById('tweetEmbedContainer').innerHTML = `<div class="tweet" id="${tweetID}"></div>`;
     // document.getElementById('tweetEmbedContainerTransmog').innerHTML = `<div class="tweet" id="${tweetID}"></div>`;
     embedTweetJS();
@@ -127,10 +121,8 @@ const assignTransmogEmbed = function (textForTweet) {
     }, 1000)
 }
 
-
 const nextTweet = function () {
     counter++
-    console.log(counter)
     if (counter >= 15) {
         counter = 0
     }
@@ -149,45 +141,7 @@ const twitterLink = function (string) {
     document.getElementById("twitterPost").href = `https://twitter.com/intent/tweet?text=${string}`;
 }
 
-//  const postTweet = function(message) {
-//     $.ajax({
-//         url: `${corsAnywhere}https://api.twitter.com/oauth2/token`,
-//         method: "POST",
-//         contentType: "application/x-www-form-urlencoded;charset=UTF-8",
-//         data: {
-//             grant_type: "client_credentials"
-//         },
-//         headers: {
-//             Authorization: "Basic " + basicAuth
-//         }
-//     }).then(function (response) {
-//         const bearerToken = response.access_token;
-
-//         return $.ajax({
-//             url: corsAnywhere + `https://api.twitter.com/1.1/statuses/update.json?=${message}`,
-//             method: "POST",
-//             headers: {
-//                 Authorization: "Bearer " + bearerToken,
-//                 oauth_consumer_key= consumerKey,
-//                 oauth_nonce="generated_oauth_nonce",
-//                 oauth_signature="generated_oauth_signature",
-//                 oauth_signature_method="HMAC-SHA1",
-//                 oauth_timestamp="generated_timestamp",
-//                 oauth_token="oauth_token",
-//                 oauth_version="1.0"
-//             }
-//         });
-//     });
-// } 
-
-
-
-
-
-
 $('#getTweetButton').on('click', searchUser)
 $('#searchKey').on('click', searchKey)
-
 $('#nextTweet').on('click', nextTweet)
-//$('#export').on('click', postTweet(transformedTweet))
 
