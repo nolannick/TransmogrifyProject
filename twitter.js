@@ -67,7 +67,7 @@ const searchKey = function () {
         counter = 0
         buttonClick = "";
         globalArray = timeline;
-        //assignTwitterID(timeline);
+        assignTwitterID(timeline);
         splitTextKey(timeline)
     });
 }
@@ -103,7 +103,7 @@ const assignTwitterID = function (twitterArray) {
     let tweetID = twitterArray.statuses[counter].id_str;
     console.log(tweetID);
     document.getElementById('tweetEmbedContainer').innerHTML = `<div class="tweet" id="${tweetID}"></div>`;
-    // document.getElementById('tweetEmbedContainerTransmog').innerHTML = `<div class="tweet" id="${tweetID}"></div>`;
+    // document.getElementById('tweetEmbedContainerTransmog').innerHTML = `<div class="tweet" id="${tweetID}"></div>`
     embedTweetJS();
     // $("#tweetEmbedContainerTransmog").find("p.Tweet-text").text = 'Testing';
     // Tweet-text is the class of the <p> elemnt that contains the tweet text
