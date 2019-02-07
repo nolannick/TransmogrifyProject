@@ -188,6 +188,7 @@ input {
 .originalTweetContainer {
     height: 0px;
     color: white;
+    display: none;
 }
 
 /* .transmogTweetContainer {
