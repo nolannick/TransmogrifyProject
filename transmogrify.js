@@ -61,8 +61,6 @@ const transmogrify = function () {
       let flag = findRegX(potentialWord);
       if (chosenIndexes.includes(potentialWord) || bannedWords.includes(potentialWord) || potentialWord.includes("'") || potentialWord.includes("http") || potentialWord.toLowerCase() !== potentialWord) {
       } else {
-        console.log(chosenIndexes.push(array[potentialIndex]));
-        console.log(synonymObject.indexes);
         //add indexes to synonym object array for later use
         synonymObject.indexes.push(potentialIndex);
       }
@@ -82,7 +80,6 @@ const transmogrify = function () {
         spongedWords[i]["scrubbedWord"] = grabRestOfWord(arrayWord);
         chosenWords[i] = spongedWords[i].scrubbedWord//will push new word onto chosenWords array
         newSynonyms.changedIndexes.push(i);
-        console.log(chosenWords[i])
       }
 
       i++;
@@ -93,20 +90,10 @@ const transmogrify = function () {
 
     for (let i = 0; i < chosenIndexes.length; i++) {//change foreach
       chosenWords.push(chosenIndexes[i]);
-      console.log(spongedWords[i] = new Object());
-      console.log(spongedWords[i]["word"] = chosenIndexes[i]);
     }
-    console.log(chosenWords);
     scrubWords(spongedWords, chosenWords);
-    console.log(spongedWords[0].word);
     return chosenWords;
   }
-
-  //   const boldWords = function(array) {
-  //     console.log(array.map(word => `<b>${word}</b>`));
-  //     return array;
-  //  }
-
 
   const randomInt = function (max) {
     return Math.floor(Math.random() * Math.floor(max));
@@ -138,19 +125,13 @@ const transmogrify = function () {
           continue;
         }
         let numberOfSynonyms = res[property].synonyms.length;
-        console.log(res);
         newWords.push(res[property].synonyms[randomInt(numberOfSynonyms)]);
       }
-      console.log(res);
-      //const newWordsBold = boldWords(newWords); 
       addWordsToSynonymObject(newWords, newSynonyms);
       newSynonyms.changedIndexes.forEach(function (index) {
         let punctuation = spongedWords[index].punctuation;
-        console.log(newSynonyms.synonyms[index] += punctuation);
       })
-      console.log(newSynonyms.synonyms);
       const newTwitterString = integrateSynonyms(twitterArray, newSynonyms, chosenWords);
-      //lengthOfWords(newSynonyms.words);
       displayText(newTwitterString);
       twitterLink(newTwitterString);
     }).catch(function () {});
@@ -160,11 +141,9 @@ const transmogrify = function () {
     for (let i = 0; i < newSynonyms.synonyms.length; i++) {
       if (newSynonyms.synonyms[i] !== undefined) {
         twitterArray[newSynonyms.indexes[i]] = newSynonyms.synonyms[i];
-        console.log(chosenWords);
       }
       else {
         newSynonyms.synonyms[i] = chosenWords[i];
-        console.log(chosenWords[i]);
         twitterArray[newSynonyms.indexes[i]] = newSynonyms.synonyms[i];
       }
     }
@@ -178,13 +157,12 @@ const transmogrify = function () {
     })
   }
 
-  var reg1 = new RegExp(/\W/); //need to avoid grabbing apostrophes! incorporate apostrophes into the regex
+  var reg1 = new RegExp(/\W/); 
 
-  //turn twitter array into variable
-  console.log(twitterArray);
+
+
   let indexes = randomize(twitterArray, amountOfSynonyms, newSynonyms); //randomizes the indexes
   let wordstoSynonym = indexesToWords(indexes, chosenWords);
-  //lengthOfWords(wordstoSynonym);
   grabSynonyms(wordstoSynonym);
 
 }
