@@ -18,8 +18,12 @@ body {
 #banner {
     text-align: center;
     margin: 0 0 20px 0;
-    font-family: 'Black Ops One', cursive;
-    font-size: 50px;
+    /* font-family: 'Black Ops One', cursive; */
+    /* font-family: 'Ubuntu', sans-serif; */
+    /* font-family: 'Lobster', cursive; */
+    /* font-family: 'Righteous', cursive; */
+    font-family: 'Permanent Marker', cursive;
+    font-size: 60px;
     padding: 20px;
     color: #c5c6c7;
     text-decoration: underline solid #c5c6c7;
