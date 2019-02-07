@@ -9,8 +9,8 @@ const transmogrify = function () {
   let newSynonyms = Object.create(items);
 
   let spongedWords = Object.create(oldWords);
-  let unchangedTwitterString = document.querySelector('.originalTweetContainer').innerText;
-  let twitterString = unchangedTwitterString.replace(/([\uE000-\uF8FF]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|[\u2011-\u26FF]|\uD83E[\uDD10-\uDDFF])/g, '') //Grab tweet text
+  let twitterString = document.querySelector('.originalTweetContainer').innerText;
+  //let twitterString = unchangedTwitterString.replace(/([\uE000-\uF8FF]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|[\u2011-\u26FF]|\uD83E[\uDD10-\uDDFF])/g, '') //Grab tweet text
   //let twitterString = "sup isn't this ain't proud faul't bann't banned"; 
   const twitterStrtoArr = function (string) { //Input the string to output an array. 
     return string.split(" ");
@@ -41,7 +41,6 @@ const transmogrify = function () {
   const grabRestOfWord = function (array) {
     word = array.splice(0, array.length - 1);
     joinedWord = word.join('');
-    console.log(joinedWord)
     return joinedWord;
   }
 
@@ -130,15 +129,19 @@ const transmogrify = function () {
           "X-Mashape-Key": "a4b964e282msh1e623fbe6a9e7a0p1ad416jsn793a80aeda68",
           "Accept": "application/json"
         }
-      });
+      }).catch(err => undefined);
     });
     Promise.all(urlPromises).then(res => {
       console.log("transmogErr", res);
       for (const property in res) {
+        if(res[property]=== undefined){
+          continue;
+        }
         let numberOfSynonyms = res[property].synonyms.length;
         console.log(res);
         newWords.push(res[property].synonyms[randomInt(numberOfSynonyms)]);
       }
+      console.log(res);
       //const newWordsBold = boldWords(newWords); 
       addWordsToSynonymObject(newWords, newSynonyms);
       newSynonyms.changedIndexes.forEach(function (index) {
@@ -183,11 +186,5 @@ const transmogrify = function () {
   let wordstoSynonym = indexesToWords(indexes, chosenWords);
   //lengthOfWords(wordstoSynonym);
   grabSynonyms(wordstoSynonym);
-
-  // newSynonyms.changedIndexes.forEach(function (index){
-  //   let punctuation = spongedWords[index].punctuation;
-  //   console.log(newSynonyms.synonyms[index] += punctuation);
-  // })
-
 
 }
